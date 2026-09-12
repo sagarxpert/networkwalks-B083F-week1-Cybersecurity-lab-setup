@@ -1,212 +1,437 @@
+<div align="center">
 
-# Cybersecurity Lab Environment
+# 💻 CYBERSECURITY LAB ENVIRONMENT SETUP
 
-### WEEK 01 | LAB BUILD & NETWORK VALIDATION
+### NetworkWalks Internship — Week 01
 
-**Kali Linux · Oracle VirtualBox · Virtual Networking · Linux Networking**
+### Kali Linux • VMware Workstation • Virtual Networking
 
-## Lab Purpose
+![VMware](https://img.shields.io/badge/VMware-Workstation-orange)
+![Kali Linux](https://img.shields.io/badge/Kali-Linux-blue)
+![Windows 11](https://img.shields.io/badge/Host-Windows%2011-success)
+![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-red)
+![NetworkWalks](https://img.shields.io/badge/Internship-NetworkWalks-purple)
 
-This lab establishes a **controlled, isolated, and reproducible cybersecurity environment** using Oracle VirtualBox and Kali Linux.
+**Building a controlled cybersecurity laboratory environment using VMware Workstation and Kali Linux.**
 
-The environment is designed to provide a safe foundation for hands-on experimentation, network analysis, security testing, and future cybersecurity projects without exposing production systems or unauthorized networks to laboratory activities.
+</div>
 
-### Practical Focus
-
-* Computer & Network Security
-* Linux Administration
-* Cisco & Network Configuration
-* Ethical Hacking
-* Vulnerability Assessment & Penetration Testing (VAPT)
-* Security Tools & Laboratory Exercises
-* Python for Cybersecurity
-* Security Automation
-
-## Lab Environment
-
-The laboratory is implemented as a **virtualized cybersecurity workspace** on a Windows 11 host, with **Oracle VirtualBox 7.2.14** providing the virtualization layer and **Kali Linux 2026.2** serving as the primary security workstation.
-
-The virtual environment is connected through a dedicated **NAT Network** using the `10.0.0.0/24` IPv4 address space. Kali Linux operates at `10.0.0.2/24`, with `10.0.0.1` as the default gateway and `8.8.8.8` as the configured DNS resolver.
-
-This setup establishes a **controlled and repeatable network boundary** for laboratory activities. Network configuration, connectivity, and routing are validated from within the virtual environment, while a VirtualBox snapshot preserves the known-good baseline for subsequent experimentation and recovery.
-
-### Environment Specification
-
-| Layer                    | Configuration                                                     |
-| ------------------------ | ----------------------------------------------------------------- |
-| **Host Layer**           | Windows 11 · Intel Core i3/i5 · 8–16 GB RAM · 512 GB–1 TB Storage |
-| **Virtualization Layer** | Oracle VirtualBox 7.2.14                                          |
-| **Security Layer**       | Kali Linux 2026.2                                                 |
-| **Network Layer**        | NAT Network · IPv4                                                |
-| **Address Space**        | `10.0.0.0/24`                                                     |
-| **Kali Linux**           | `10.0.0.2/24`                                                     |
-| **Default Gateway**      | `10.0.0.1`                                                        |
-| **DNS Resolver**         | `8.8.8.8`                                                         |
-| **Recovery Baseline**    | VirtualBox Snapshot                                               |
-
-> **Configuration Note:** Hardware and network parameters should reflect the actual laboratory environment used during implementation.
-
-## Tools & Resources
-
-The lab environment was built using the following tools and official resources:
-
-| Tool / Resource       | Purpose                                                    |
-| --------------------- | ---------------------------------------------------------- |
-| **7-Zip**             | Extracting and preparing virtual machine files             |
-| **Oracle VirtualBox** | Creating and managing the virtualized lab environment      |
-| **Kali Linux**        | Primary operating system for cybersecurity laboratory work |
-
-### Official Resources
-
-* [7-Zip — Official Download](https://7-zip.org/download.html)
-* [Oracle VirtualBox — Official Downloads](https://virtualbox.org/wiki/Downloads)
-* [Kali Linux — Official Downloads](https://kali.org/get-kali)
-
-**Documentation and software versions are referenced from official project sources to maintain a consistent and reproducible lab environment.**
-
-## Phase 01 — Lab Setup
-
-1. **7-Zip Setup**
-2. **VirtualBox Setup**
-3. **Network Configuration**
-4. **Kali Linux Setup**
-5. **IP Configuration**
-6. **VM Snapshot**
-
-### Step 01 — 7-Zip Installation
-
-Install **7-Zip** to extract the downloaded virtual machine package before importing it into the virtualization environment.
-
-**Official Download:** https://7-zip.org/download.html
-
-### Step 02 — Oracle VirtualBox Installation
-
-Install **Oracle VirtualBox** to create and manage the virtual machines required for the cybersecurity lab.
-
-**Official Download:** https://virtualbox.org/wiki/Downloads
-<img width="1919" height="1049" alt="Screenshot 2026-08-13 200258" src="https://github.com/user-attachments/assets/291c7f15-63d5-4173-98bc-205c7dfdf2ce" />
-
-
-### Step 03 — Network Configuration
-
-Configure a **NAT Network** in Oracle VirtualBox using the `10.0.0.0/24` IPv4 network for the lab environment.
-
-<img width="1918" height="1022" alt="Screenshot 2026-08-13 200636" src="https://github.com/user-attachments/assets/73dbb64f-3354-48a5-8718-d9910652b72c" />
-
-
-### Step 04 — Kali Linux Setup
-
-Download and import the **Kali Linux Virtual Machine** into Oracle VirtualBox and connect it to the configured lab network.
-
-**Official Download:** https://kali.org/get-kali
-
-<img width="1920" height="922" alt="VirtualBox_KASL_107_10_08_2026_16_54_43" src="https://github.com/user-attachments/assets/a12ab319-b16e-4d9a-9f58-106e43c8812c" />
-<img width="1914" height="1013" alt="Screenshot 2026-08-10 162755" src="https://github.com/user-attachments/assets/ff54b6f7-7ecd-44b4-bf54-79f340451245" />
-
-
-### Step 05 — Kali Linux IP Configuration
-
-Configure the Kali Linux network interface according to the lab's IPv4 addressing plan.
-
-| Network Parameter | Configuration |
-|---|---|
-| **IP Address** | `10.0.0.2/24` |
-| **Default Gateway** | `10.0.0.1` |
-| **DNS Server** | `8.8.8.8` |
-
-<img width="1920" height="922" alt="VirtualBox_KASL_107_13_08_2026_20_18_24" src="https://github.com/user-attachments/assets/2e41eb06-ce2e-4c6b-a671-480e9d2f740f" />
-
-### Network Verification
-
-The following commands were used to inspect and refresh the Kali Linux network interface:
-
-```bash
-ifconfig
-sudo ifconfig eth0 down
-sudo ifconfig eth0 up
-```
-
-
-<img width="1920" height="922" alt="VirtualBox_KASL_107_13_08_2026_20_26_48" src="https://github.com/user-attachments/assets/3777a938-e39b-4666-a5eb-4df41cbc241e" />
-
-### Step 06 — VM Snapshot
-
-Create a **VirtualBox snapshot** after completing the initial Kali Linux lab setup. The snapshot preserves the current VM state and provides a recovery point for future laboratory work.
-
-**Purpose:** VM recovery and configuration rollback  
-**Snapshot:** Created successfully  
-**Status:** `Completed`
-
-<img width="1919" height="1015" alt="Screenshot 2026-08-13 202858" src="https://github.com/user-attachments/assets/17de7f6d-c1a6-4dee-9310-254c66ac2fed" />
-
-
-## Lab Demonstration
-
-A short walkthrough of the completed Week 01 environment, including the virtual machine, network configuration, connectivity checks, and recovery point.
-
-**Project Video:** 
-
-WhatsApp Video 2026-08-13 at 9.54.02 PM.mp4
 ---
 
-## Final Architecture
+# 📌 Project Overview
+
+This project documents the setup of a personal cybersecurity laboratory environment created during **Week 01** of my **NetworkWalks Cybersecurity Internship**.
+
+The objective was to build a controlled virtual environment that can be safely used for future cybersecurity learning, testing, and practical exercises.
+
+The lab was designed using:
+
+- VMware Workstation
+- Kali Linux Virtual Machine
+- NAT Networking
+- Host-Only Networking
+- Network Verification Testing
+- Snapshot-Based Recovery
+
+---
+
+# 🎯 Lab Purpose
+
+Cybersecurity activities often require isolated environments where tools and configurations can be tested without affecting the host operating system.
+
+Virtualization provides:
+
+- Safe experimentation
+- Environment isolation
+- Easy recovery
+- Repeatable lab setups
+- Network segmentation
+
+For this lab:
+
+- **VMnet8 (NAT)** provides Internet connectivity.
+- **VMnet2 (Host-Only)** provides an isolated laboratory network.
+
+This design allows Internet access while maintaining a separate network segment for future cybersecurity exercises.
+
+---
+
+# 🖥️ Host Environment
+
+| Component | Details |
+|------------|----------|
+| Operating System | Windows 11 |
+| Processor | Intel Core i5-12500H |
+| Memory | 16 GB RAM |
+| Storage | 512 GB SSD |
+| Graphics | NVIDIA RTX 3050 |
+| Virtualization Platform | VMware Workstation |
+
+---
+
+# 🧰 Technologies Used
+
+| Tool | Purpose |
+|--------|----------|
+| VMware Workstation | Virtualization Platform |
+| Kali Linux | Cybersecurity Operating System |
+| VMware Virtual Networks | Network Segmentation |
+| Linux Networking Tools | Network Verification |
+| VMware Snapshots | Recovery & Rollback |
+
+---
+
+# 🏗️ Lab Architecture
 
 ```text
-Windows 11 Host
-      │
-      ▼
-       │
-       ▼
-Oracle VirtualBox
-      │
-      ▼
-       │
-       ▼
-NAT Network
-10.0.0.0/24
-      │
-      ▼
-Kali Linux
-       │
-       ▼
-Kali Linux VM
-10.0.0.2/24
+                 Windows 11 Host
+                         |
+                         v
+                VMware Workstation
+                         |
+      +---------------------------------------+
+      |                                       |
+      v                                       v
+
+ VMnet8 (NAT)                         VMnet2 (Host-Only)
+192.168.72.0/24                        10.0.0.0/24
+
+      |                                       |
+      v                                       v
+
+eth0                                 eth1
+192.168.72.128/24                    10.0.0.129/24
+
+       \                             /
+        \                           /
+         +-------------------------+
+         |       Kali Linux        |
+         +-------------------------+
 ```
-## Key Outcomes
 
-The Week 01 lab successfully established the core virtual cybersecurity environment and validated its initial network configuration.
+### Network Design
 
-- Kali Linux VM deployed and configured
-- VirtualBox NAT Network established
-- IPv4 addressing configured
-- Network connectivity and DNS resolution verified
-- VM snapshot created as a recovery point
-- Environment prepared for subsequent cybersecurity exercises
+| Network | Purpose |
+|----------|----------|
+| VMnet8 | Internet Connectivity |
+| VMnet2 | Isolated Lab Network |
+| eth0 | Connected to VMnet8 |
+| eth1 | Connected to VMnet2 |
 
-## Security & Responsible Use
+---
 
-This laboratory is intended for authorized cybersecurity education, experimentation, and security testing.
+# 🚀 Step 1 — VMware Workstation Setup
 
-All activities must remain within systems, networks, virtual machines, and applications that are owned or explicitly authorized for testing.
+A Kali Linux virtual machine was deployed using VMware Workstation.
+
+📸 <img width="1839" height="910" alt="Screenshot 2026-08-13 234703" src="https://github.com/user-attachments/assets/e2162b46-477b-4e45-b860-2f22b0c7b2f3" />
 
 
-## Mentor
 
-**Waqas Karim (CCIE)**
+**Suggested Screenshot:**
+- VMware Workstation Home Screen
 
-Technical guidance and mentorship provided throughout the cybersecurity internship.
+---
 
-## Phase 01 — Completion
+# 🚀 Step 2 — Kali Linux Virtual Machine
 
-**Status:** `COMPLETED`
+A Kali Linux virtual machine was created using VMware's available Kali Linux virtual machine option.
 
-Week 01 successfully established the foundational cybersecurity lab environment using **Oracle VirtualBox and Kali Linux**. The environment has been configured, network settings validated, and a recovery point created for continued laboratory work.
+📸 <img width="1012" height="815" alt="Screenshot 2026-08-13 224808" src="https://github.com/user-attachments/assets/f3ad845a-eb08-4984-a947-f6f3b347f074" />
 
-| Phase | Focus | Status |
-|---|---|---|
-| **01** | Virtualization & Network Foundations | **Completed** |
 
-**Environment:** Kali Linux · Oracle VirtualBox · NAT Network  
-**Next:** Advanced cybersecurity laboratory exercises
+**Suggested Screenshot:**
+- Kali Linux VM Overview Page
 
-**Week 01 — Lab Environment Setup: Completed**
+---
+
+# 🚀 Step 3 — Virtual Machine Hardware Configuration
+
+The Kali Linux virtual machine was configured with dedicated virtual hardware resources.
+
+| Resource | Value |
+|-----------|--------|
+| RAM | 4 GB |
+| CPU | 4 Cores |
+| Disk | 80 GB |
+| Network Adapters | 2 |
+
+📸 <img width="877" height="869" alt="Screenshot 2026-08-13 235235" src="https://github.com/user-attachments/assets/5a654a37-d5fc-4824-ab01-cc63c38c60a6" />
+
+
+
+**Suggested Screenshot:**
+- VMware Hardware Configuration Screen
+
+---
+
+# 🌐 Step 4 — VMware Virtual Network Configuration
+
+## VMnet8 (NAT)
+
+Used for Internet access.
+
+| Setting | Value |
+|-----------|---------|
+| Type | NAT |
+| Network | 192.168.72.0/24 |
+| Gateway | 192.168.72.2 |
+
+📸 <img width="895" height="922" alt="Screenshot 2026-08-13 223142" src="https://github.com/user-attachments/assets/6a677610-27ad-481c-851c-a5d2942686bf" />
+
+
+**Suggested Screenshot:**
+- VMware Network Adapter 1 Configuration
+
+---
+
+## VMnet2 (Host-Only)
+
+Used as an isolated laboratory network.
+
+| Setting | Value |
+|-----------|---------|
+| Type | Host-Only |
+| Network | 10.0.0.0/24 |
+
+📸 <img width="895" height="922" alt="Screenshot 2026-08-13 223147" src="https://github.com/user-attachments/assets/1a3937ef-930c-473d-bb02-95a2df50883a" />
+
+
+**Suggested Screenshot:**
+- VMware Network Adapter 2 Configuration
+
+---
+
+## VMware Virtual Network Editor
+
+Verification of VMware virtual network configuration.
+
+📸 <img width="700" height="703" alt="Screenshot 2026-08-13 223201" src="https://github.com/user-attachments/assets/5b9749d7-755e-4809-ab5d-caef731145c4" />
+
+
+**Suggested Screenshot:**
+- VMware Virtual Network Editor showing VMnet8 and VMnet2
+
+---
+
+# 🌐 Step 5 — Kali Network Configuration
+
+After configuring the second network adapter, Kali Linux detected two interfaces.
+
+| Interface | Address |
+|------------|-----------|
+| eth0 | 192.168.72.128/24 |
+| eth1 | 10.0.0.129/24 |
+
+### Verify Interfaces
+
+```bash
+ip addr
+```
+
+Expected Result:
+
+```text
+eth0 -> 192.168.72.128/24
+eth1 -> 10.0.0.129/24
+```
+
+📸 <img width="1635" height="725" alt="Screenshot 2026-08-13 224923" src="https://github.com/user-attachments/assets/677b60f9-db14-4289-a5e3-d60740ce78a3" />
+
+
+**Suggested Screenshot:**
+- Output of ip addr
+
+---
+
+# 🌐 Step 6 — Routing Verification
+
+The routing table confirmed:
+
+- Internet traffic uses eth0
+- Lab traffic uses eth1
+
+Command:
+
+```bash
+ip route
+```
+
+Observed Routing Table:
+
+```text
+default via 192.168.72.2 dev eth0 proto dhcp src 192.168.72.128 metric 100
+
+10.0.0.0/24 dev eth1 proto kernel scope link src 10.0.0.129 metric 101
+
+192.168.72.0/24 dev eth0 proto kernel scope link src 192.168.72.128 metric 100
+```
+
+📸 <img width="1320" height="193" alt="Screenshot 2026-08-13 224951" src="https://github.com/user-attachments/assets/307216bb-e763-447a-b4a9-fc000759c34d" />
+
+
+**Suggested Screenshot:**
+- Output of ip route
+
+---
+
+# ✅ Step 7 — Connectivity Testing
+
+## Internet Connectivity Test
+
+Command:
+
+```bash
+ping -c 4 8.8.8.8
+```
+
+Result:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+## DNS Resolution Test
+
+Command:
+
+```bash
+ping -c 4 google.com
+```
+
+Result:
+
+```text
+Replies successfully received
+```
+
+📸 <img width="1360" height="739" alt="Screenshot 2026-08-13 225036" src="https://github.com/user-attachments/assets/e7a9ad7c-a550-4cff-a228-2cbed62f59b1" />
+ 
+
+**Suggested Screenshot:**
+- Ping 8.8.8.8
+- Ping google.com
+
+---
+
+# 🔄 Snapshot & Recovery
+
+After completing the base laboratory configuration, a VMware snapshot was created (or planned) to provide a recovery point.
+
+Benefits:
+
+- Safe experimentation
+- Easy rollback
+- Malware analysis preparation
+- Rapid recovery from misconfigurations
+
+📸 <img width="420" height="287" alt="Screenshot 2026-08-13 235700" src="https://github.com/user-attachments/assets/5655ddf4-655e-452d-9571-a1c454c64361" />
+
+
+**Suggested Screenshot:**
+- VMware Snapshot Manager or Snapshot Creation Screen
+
+---
+
+# ⚠️ Problems Encountered & Solutions
+
+| Problem | Solution |
+|-----------|-----------|
+| Reference implementation used VirtualBox | Adapted the setup for VMware Workstation |
+| Host-only lab network was not initially available inside Kali | Added a second VMware network adapter |
+| Kali initially only showed eth0 | Configured VMnet2 and attached it to the VM |
+| Ping to 10.0.0.1 failed before host-only setup | Verified network adapter configuration and routing |
+
+### Key Observation
+
+Before the second adapter was configured:
+
+```text
+eth0 = 192.168.72.128
+```
+
+After adding VMnet2:
+
+```text
+eth1 = 10.0.0.129
+```
+
+The routing table then displayed:
+
+```text
+10.0.0.0/24 dev eth1
+```
+
+confirming successful connection to the isolated laboratory network.
+
+---
+
+# 🎥 Project Demonstration
+
+📹 Demo Video:
+
+```text
+
+```
+
+---
+
+# 📚 Key Learning Outcomes
+
+- VMware Workstation fundamentals
+- Virtual machine deployment
+- Network segmentation
+- NAT networking
+- Host-only networking
+- Linux interface management
+- Routing verification
+- Connectivity troubleshooting
+- Cybersecurity lab design principles
+
+---
+
+# 🔐 Security & Ethics
+
+This laboratory environment was created exclusively for:
+
+- Educational purposes
+- Cybersecurity learning
+- Network experimentation
+- Defensive security practice
+
+All activities should be performed only in authorized environments and in accordance with applicable laws, policies, and ethical guidelines.
+
+---
+
+# 👨‍💻 Internship Information
+
+| Item | Details |
+|--------|----------|
+| Internship | NetworkWalks Cybersecurity Internship |
+| Week | Week 01 |
+| Batch | B083F |
+| Focus Area | Cybersecurity Lab Environment Setup |
+
+---
+
+
+# 👤 Author
+
+**Name:** Sagar Singh Shekhawat
+
+**Batch:** B083F
+
+**LinkedIn:** https://www.linkedin.com/in/balwant-singh-a5a4a232b/
+
+
+---
+
+<div align="center">
+
+### ⭐ NetworkWalks Internship — Week 01
+
+Building a strong foundation for future cybersecurity laboratories and practical learning.
+
+</div>
