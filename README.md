@@ -423,7 +423,7 @@ All activities should be performed only in authorized environments and in accord
 
 **Batch:** B083F
 
-**LinkedIn:** https://www.linkedin.com/in/balwant-singh-a5a4a232b/
+**LinkedIn:** https://www.linkedin.com/in/sagar-singh-shekhawat-251a0032a/
 
 
 ---
